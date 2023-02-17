@@ -73,29 +73,29 @@ measure the runtime and enter it into the table.
 
 |                | `sequential_search_itr`   | `binary_search_rec`   |
 | -------------- | ------------------------- | --------------------- | 
-| `n=2**0`       |                           |                       |
-| `n=2**1`       |                           |                       |
-| `n=2**2`       |                           |                       |
-| `n=2**3`       |                           |                       |
-| `n=2**4`       |                           |                       |
-| `n=2**5`       |                           |                       |
-| `n=2**6`       |                           |                       |
-| `n=2**7`       |                           |                       |
-| `n=2**8`       |                           |                       |
-| `n=2**9`       |                           |                       |
-| `n=2**10`      |                           |                       |
-| `n=2**11`      |                           |                       |
-| `n=2**12`      |                           |                       |
-| `n=2**13`      |                           |                       |
-| `n=2**14`      |                           |                       |
-| `n=2**15`      |                           |                       |
-| `n=2**16`      |                           |                       |
-| `n=2**17`      |                           |                       |
-| `n=2**18`      |                           |                       |
-| `n=2**19`      |                           |                       |
-| `n=2**20`      |                           |                       |
-| `n=2**21`      |                           |                       |
-| `n=2**22`      |                           |                       |
+| `n=2**0`       |    0.147 usec/loop        |    0.709 usec/loop    |
+| `n=2**1`       |    0.184 usec/loop        |    0.97 usec/loop     |
+| `n=2**2`       |    0.257 usec/loop        |    1.15 usec/loop     |
+| `n=2**3`       |    0.375 usec/loop        |    1.02 usec/loop     |
+| `n=2**4`       |    0.527 usec/loop        |    1.28 usec/loop     |
+| `n=2**5`       |    0.876 usec/loop        |    1.61 usec/loop     |
+| `n=2**6`       |    1.44 usec/loop         |    1.79 usec/loop     |
+| `n=2**7`       |    2.58 usec/loop         |    2.13 usec/loop     |
+| `n=2**8`       |    4.95 usec/loop         |    2.44 usec/loop     |
+| `n=2**9`       |    9.89 usec/loop         |    2.70 usec/loop     |
+| `n=2**10`      |    20.1 usec/loop         |    2.83 usec/loop     |
+| `n=2**11`      |    38.1 usec/loop         |    3.15 usec/loop     |
+| `n=2**12`      |    78.4 usec/loop         |    3.38 usec/loop     |
+| `n=2**13`      |    156 usec/loop          |    3.39 usec/loop     |
+| `n=2**14`      |    312 usec/loop          |    3.72 usec/loop     |
+| `n=2**15`      |    649 usec/loop          |    4.02 usec/loop     |
+| `n=2**16`      |    1.27 msec/loop         |    4.23 usec/loop     |
+| `n=2**17`      |    2.44 msec/loop         |    4.34 usec/loop     |
+| `n=2**18`      |    4.97 msec/loop         |    4.66 usec/loop     |
+| `n=2**19`      |    9.01 msec/loop         |    4.87 usec/loop     |
+| `n=2**20`      |    17.8 msec/loop         |    5.11 usec/loop     |
+| `n=2**21`      |    35.9 msec/loop         |    5.32 usec/loop     |
+| `n=2**22`      |    72.8 msec/loop         |    5.99 usec/loop     |
 
 > **HINT:**
 > You don't have to run all of these tests manually.
@@ -225,14 +225,14 @@ For each cell in the table below:
 Modify the command above for the corresponding search function and container type;
 measure the runtime and enter it into the table.
 
-|                            | `array`  | `list`  | `tuple`     | `deque`       |
-| -------------------------- | ---------| --------|------------ | ------------- |
-| `sequential_search_itr`    |          |         |             |               |
-| `sequential_search_itr2`   |          |         |             |               |
-| `sequential_search_rec`    |  ---     | ---     |  ---        |  ---          |
-| `binary_search_itr`        |          |         |             |               |
-| `binary_search_rec`        |          |         |             |               |
-| `binary_search_rec2`       |          |         |             |  ---          |
+|                            | `array`  | `list`  | `tuple` | `deque` |
+| -------------------------- | ---------| --------|---------| --------|
+| `sequential_search_itr`    |8.47 msec |1.28 msec|1.11 msec|1.18 msec|
+| `sequential_search_itr2`   |10.9 msec |2.38 msec|2.57 msec|113 msec |
+| `sequential_search_rec`    |  ---     | ---     |  ---    |  ---    |
+| `binary_search_itr`        |10.2 usec |2.66 usec|2.34 usec|173 usec |
+| `binary_search_rec`        |12.2 usec |3.96 usec|3.98 usec|199 usec |
+| `binary_search_rec2`       |10 usec   |443 usec |447 usec |  ---    |
 
 You should notice that:
 1. for the `array` container, all implementations of binary search work well
@@ -245,14 +245,14 @@ You should notice that:
 
 We will prove all of these statements formally next week in class by showing that the runtimes are:
 
-|                            | `array`  | `list`  | `tuple`     | `deque`       |
-| -------------------------- | ---------| --------|------------ | ------------- |
-| `sequential_search_itr`    | O(n)     | O(n)    | O(n)        | O(n)          |
-| `sequential_search_itr2`   | O(n)     | O(n)    | O(n)        | O(n^2)        |
-| `sequential_search_rec`    | ---      | ---     | ---         | ---           |
-| `binary_search_itr`        | O(log n) | O(log n)| O(log n)    | O(n)          |
-| `binary_search_rec`        | O(log n) | O(log n)| O(log n)    | O(n)          |
-| `binary_search_rec2`       | O(log n) | O(n)    | O(n)        | ---           |
+|                            | `array`  | `list`  | `tuple` | `deque`  |
+| -------------------------- | ---------| --------|---------| -------- |
+| `sequential_search_itr`    | O(n)     | O(n)    | O(n)    | O(n)     |
+| `sequential_search_itr2`   | O(n)     | O(n)    | O(n)    | O(n^2)   |
+| `sequential_search_rec`    | ---      | ---     | ---     | ---      |
+| `binary_search_itr`        | O(log n) | O(log n)| O(log n)| O(n)     |
+| `binary_search_rec`        | O(log n) | O(log n)| O(log n)| O(n)     |
+| `binary_search_rec2`       | O(log n) | O(n)    | O(n)    | ---      |
 
 > **HINT:**
 > You'll notice that the `binary_search_rec` function has the best runtimes overall.
